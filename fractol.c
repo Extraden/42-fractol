@@ -6,7 +6,7 @@
 /*   By: dsemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/04 20:09:44 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/04 20:33:28 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_complex	print_sequence(int n, t_complex c)
 		tmp_i = 2 * zn.real * zn.i;
 		zn.real = tmp_real + c.real;
 		zn.i = tmp_i + c.i;
-		printf("Real part: %f\n Imaginary part: %f\n", zn.real, zn.i);
+		printf("Real part: %f\nImaginary part: %f\n", zn.real, zn.i);
 		i++;
 	}
 	return (zn);
