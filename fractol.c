@@ -6,7 +6,7 @@
 /*   By: dsemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/05 15:56:11 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:14:28 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ int	main(int argc, char **argv)
 	c.i = atof(argv[2]);
 	n = atoi(argv[3]);
 	z = print_sequence(n, c);
-	if (z.real * z.real + z.i * z.i > 4) printf("\nC doesn't relate to Mandelbrot set\n");
-	printf("\nC relates to Mandelbrot set\n");
+	if (z.real * z.real + z.i * z.i > 4)
+		printf("\nC doesn't relate to Mandelbrot set\n");
+	else
+		printf("\nC relates to Mandelbrot set\n");
 	return (0);
 }
