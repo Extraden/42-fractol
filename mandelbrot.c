@@ -6,7 +6,7 @@
 /*   By: dsemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/06 16:02:55 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:05:13 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ t_complex	print_sequence(t_complex c)
 	return (zn);
 }
 
-// 1 argument: real part, 2 arg: imaginary part: 3 arg: number of iterations
+// 1 argument: real part, 2 arg: imaginary part
 int	main(int argc, char **argv)
 {
 	t_complex	c;
 	t_complex	z;
 
-	if (argc != 4)
+	if (argc != 3)
 	{
 		printf("Wrong number of arguments!\n");
 		printf("Usage: %s <real_part> <imaginary_part>\n", argv[0]);
