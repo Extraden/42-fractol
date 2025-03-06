@@ -6,7 +6,7 @@
 /*   By: dsemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/06 15:20:25 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:59:14 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ int	main(int argc, char **argv)
 	{
 		printf("Enter arguments:\n1.C real part 2.C imaginary part 3.z0 real part 4.z0 imaginary part 5.Number of iterations\n");
     	printf("Example: ./a.out -0.8 0.156 0.2 0 15\n");
-    return (1);
-		return (0);
+    	return (1);
 	}
 	c.real = atof(argv[1]);
 	c.i = atof(argv[2]);
