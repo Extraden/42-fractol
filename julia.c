@@ -31,6 +31,8 @@ t_complex	print_sequence(t_complex c, t_complex z0)
 		zn.real = tmp_real + c.real;
 		zn.i = tmp_i + c.i;
 		printf("z%d:\nReal part: %f\nImaginary part: %f\n\n", i + 1, zn.real, zn.i);
+		if (zn.real * zn.real + zn.i * zn.i > 4)
+			return (zn);
 		i++;
 	}
 	return (zn);
@@ -57,6 +59,6 @@ int	main(int argc, char **argv)
 	if (res.real * res.real + res.i * res.i > 4)
 		printf("\nz0 doesn't relate to Julia set\n");
 	else
-		printf("\nz0 relates to Julia set\n");
+		printf("\nz0 %f %f relates to Julia set\n", z0.real, z0.i);
 	return (0);
 }
