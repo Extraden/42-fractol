@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	if (argc != 5)
 	{
 		printf("Enter arguments:\n1.C real part 2.C imaginary part 3.z0 real part 4.z0 imaginary part\n");
-    	printf("Example: ./a.out -0.8 0.156 0.2 0\n");
+    	printf("Example: %s -0.8 0.156 0.2 0\n", argv[0]);
     	return (1);
 	}
 	c.real = atof(argv[1]);
