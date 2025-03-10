@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/06 16:22:48 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/08 15:44:05 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdarg.h>
 #include "fractol.h"
 
-t_complex	print_sequence(t_complex c, t_complex z0)
+t_complex	print_sequence(t_complex c)
 {
 	int	i;
 	double	tmp_real;
 	double	tmp_i;
 	t_complex	zn;
 
-	zn = z0;
+	zn = (t_complex){0, 0};
 	i = 0;
 	while (i < ITERATIONS)
 	{
@@ -38,27 +37,25 @@ t_complex	print_sequence(t_complex c, t_complex z0)
 	return (zn);
 }
 
-// 1 argument: C real part, 2 arg: C imaginary part, 3 argument: z0 real part, 4 arg: z0 imaginary part, 5 arg: number of iterations
+// 1 argument: real part, 2 arg: imaginary part
 int	main(int argc, char **argv)
 {
 	t_complex	c;
-	t_complex	z0;
-	t_complex	res;
+	t_complex	z;
 
-	if (argc != 5)
+	if (argc != 3)
 	{
-		printf("Enter arguments:\n1.C real part 2.C imaginary part 3.z0 real part 4.z0 imaginary part\n");
-    	printf("Example: %s -0.8 0.156 0.2 0\n", argv[0]);
-    	return (1);
+		printf("Wrong number of arguments!\n");
+		printf("Usage: %s <real_part> <imaginary_part>\n", argv[0]);
+		printf("Example: %s 0.2 0.3\n", argv[0]);
+		return (1);
 	}
 	c.real = atof(argv[1]);
 	c.i = atof(argv[2]);
-	z0.real = atof(argv[3]);
-	z0.i = atof(argv[4]);
-	res = print_sequence(c, z0);
-	if (res.real * res.real + res.i * res.i > 4)
-		printf("\nz0 doesn't relate to Julia set\n");
+	z = print_sequence(c);
+	if (z.real * z.real + z.i * z.i > 4)
+		printf("\nC doesn't relate to Mandelbrot set\n");
 	else
-		printf("\nz0 %f %f relates to Julia set\n", z0.real, z0.i);
+		printf("\nC relates to Mandelbrot set\n");
 	return (0);
 }
