@@ -6,7 +6,7 @@
 /*   By: dsemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:17:32 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/06 16:20:31 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:57:28 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # ifndef ITERATIONS
 #  define ITERATIONS 500
 # endif
+# define EPSILON 1e-6
 
 typedef struct s_complex
 {

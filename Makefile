@@ -1,23 +1,31 @@
 # Compiler and flags
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I minilibx-linux -I includes -Lminilibx-linux -lmlx_Linux -lmlx -lX11 -lXext
+CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux -Iincludes -Lminilibx-linux -lmlx_Linux -lmlx -lX11 -lXext -lm
 
 # Directories
 
 SRC_DIR = src/
-SRCS = render.c mandelbrot.c julia.c
-
+OBJ_DIR = obj/
 INCLUDES_DIR = includes/
-INCLUDES = $(wildcard *.h)
+
+# Files
+
+SRCS = render.c mandelbrot.c julia.c
+OBJS = $(SRC:.c=.o)
+INCLUDES = $(wildcard $(INCLUDES_DIR)*.h)
+
+NAME = all
 
 # Targets
 
-render: $(addprefix $(SRC_DIR), render.c) $(addprefix $(INCLUDES_DIR), $(INCLUDES))
+all: render mandelbrot julia
+
+render: $(addprefix $(SRC_DIR), render.c) $(INCLUDES)
 	$(CC) $(addprefix $(SRC_DIR), render.c) -o render $(CFLAGS) 
 
-mandelbrot: $(addprefix $(SRC_DIR), mandelbrot.c) $(addprefix $(INCLUDES_DIR), $(INCLUDES))
+mandelbrot: $(addprefix $(SRC_DIR), mandelbrot.c) $(INCLUDES)
 	$(CC) $(addprefix $(SRC_DIR), mandelbrot.c) -o mandelbrot $(CFLAGS) 
 
-julia: $(addprefix $(SRC_DIR), julia.c) $(addprefix $(INCLUDES_DIR), $(INCLUDES))
+julia: $(addprefix $(SRC_DIR), julia.c) $(INCLUDES)
 	$(CC) $(addprefix $(SRC_DIR), julia.c) -o julia $(CFLAGS) 

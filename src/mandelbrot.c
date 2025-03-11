@@ -6,12 +6,13 @@
 /*   By: dsemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/08 15:44:05 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:01:27 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include "fractol.h"
 
 t_complex	print_sequence(t_complex c)
@@ -27,6 +28,8 @@ t_complex	print_sequence(t_complex c)
 	{
 		tmp_real = (zn.real * zn.real) - (zn.i * zn.i);
 		tmp_i = 2 * zn.real * zn.i;
+		if (i && fabs((tmp_real + c.real) - zn.real) < EPSILON && fabs((tmp_i + c.i) - zn.i) < EPSILON)
+			return (zn);
 		zn.real = tmp_real + c.real;
 		zn.i = tmp_i + c.i;
 		printf("z%d:\nReal part: %f\nImaginary part: %f\n\n", i + 1, zn.real, zn.i);
