@@ -6,7 +6,7 @@
 /*   By: dsemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/08 15:43:02 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/14 20:13:21 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include "fractol.h"
 
-t_complex	print_sequence(t_complex c, t_complex z0)
+t_complex	print_sequence_julia(t_complex c, t_complex z0)
 {
 	int	i;
 	double	tmp_real;
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 	c.i = atof(argv[2]);
 	z0.real = atof(argv[3]);
 	z0.i = atof(argv[4]);
-	res = print_sequence(c, z0);
+	res = print_sequence_julia(c, z0);
 	if (res.real * res.real + res.i * res.i > 4)
 		printf("\nz0 doesn't relate to Julia set\n");
 	else

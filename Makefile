@@ -11,15 +11,18 @@ INCLUDES_DIR = includes/
 
 # Files
 
-SRCS = render.c mandelbrot.c julia.c
-OBJS = $(SRC:.c=.o)
+SRCS = fractol.c render.c mandelbrot.c julia.c
+OBJS = $(SRC_DIR)/$(SRCS:.c=.o)
 INCLUDES = $(wildcard $(INCLUDES_DIR)*.h)
 
 NAME = all
 
 # Targets
 
-all: render mandelbrot julia
+all: fractol render mandelbrot julia
+
+fractol: $(addprefix $(SRC_DIR), fractol.c) $(INCLUDES)
+	$(CC) $(addprefix $(SRC_DIR), fractol.c) -o fractol $(CFLAGS) 
 
 render: $(addprefix $(SRC_DIR), render.c) $(INCLUDES)
 	$(CC) $(addprefix $(SRC_DIR), render.c) -o render $(CFLAGS) 
