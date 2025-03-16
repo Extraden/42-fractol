@@ -15,10 +15,11 @@
 #include <math.h>
 #include <string.h>
 #include "fractol.h"
+#include "libft.h"
 
 int	main(int argc, char **argv)
 {
-	if (argc == 4 && !strcmp(argv[1], "mandelbrot"))
+	if (argc == 4 && !strncmp(argv[1], "mandelbrot", 10))
 	{
 		// 1 argument: real part, 2 arg: imaginary part
 		t_complex c;

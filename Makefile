@@ -1,7 +1,7 @@
 # Compiler and flags
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iminilibx -Iincludes
+CFLAGS = -Wall -Wextra -Werror -Iminilibx -Iincludes -I$(LIBFT)
 LIBS = -Lminilibx -lmlx -framework OpenGL -framework AppKit
 
 # Directories
