@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include "fractol.h"
@@ -37,27 +36,4 @@ t_complex	print_sequence_mandelbrot(t_complex c)
 		i++;
 	}
 	return (zn);
-}
-
-// 1 argument: real part, 2 arg: imaginary part
-int	main(int argc, char **argv)
-{
-	t_complex	c;
-	t_complex	z;
-
-	if (argc != 3)
-	{
-		printf("Wrong number of arguments!\n");
-		printf("Usage: %s <real_part> <imaginary_part>\n", argv[0]);
-		printf("Example: %s 0.2 0.3\n", argv[0]);
-		return (1);
-	}
-	c.real = atof(argv[1]);
-	c.i = atof(argv[2]);
-	z = print_sequence_mandelbrot(c);
-	if (z.real * z.real + z.i * z.i > 4)
-		printf("\nC doesn't relate to Mandelbrot set\n");
-	else
-		printf("\nC relates to Mandelbrot set\n");
-	return (0);
 }

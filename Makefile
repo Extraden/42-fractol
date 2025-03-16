@@ -1,7 +1,8 @@
 # Compiler and flags
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux -Iincludes -Lminilibx-linux -lmlx_Linux -lmlx -lX11 -lXext -lm
+CFLAGS = -Wall -Wextra -Werror -Iminilibx -Iincludes
+LIBS = -Lminilibx -lmlx -framework OpenGL -framework AppKit
 
 # Directories
 
@@ -12,23 +13,30 @@ INCLUDES_DIR = includes/
 # Files
 
 SRCS = fractol.c render.c mandelbrot.c julia.c
-OBJS = $(SRC_DIR)/$(SRCS:.c=.o)
+OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 INCLUDES = $(wildcard $(INCLUDES_DIR)*.h)
+LIBFT = libft
 
-NAME = all
+NAME = fractol
 
 # Targets
 
-all: fractol render mandelbrot julia
+all: $(NAME)
 
-fractol: $(addprefix $(SRC_DIR), fractol.c) $(INCLUDES)
-	$(CC) $(addprefix $(SRC_DIR), fractol.c) -o fractol $(CFLAGS) 
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(LIBS) $(OBJS) -o fractol
 
-render: $(addprefix $(SRC_DIR), render.c) $(INCLUDES)
-	$(CC) $(addprefix $(SRC_DIR), render.c) -o render $(CFLAGS) 
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES)
+	make -s -C $(LIBFT)
+	mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-mandelbrot: $(addprefix $(SRC_DIR), mandelbrot.c) $(INCLUDES)
-	$(CC) $(addprefix $(SRC_DIR), mandelbrot.c) -o mandelbrot $(CFLAGS) 
+clean:
+	rm -rf $(OBJ_DIR)
 
-julia: $(addprefix $(SRC_DIR), julia.c) $(INCLUDES)
-	$(CC) $(addprefix $(SRC_DIR), julia.c) -o julia $(CFLAGS) 
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
