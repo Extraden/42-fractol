@@ -1,9 +1,8 @@
 # Compiler and flags
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iminilibx -Iincludes -I$(LIBFT)
-LIBS = -Lminilibx -lmlx -framework OpenGL -framework AppKit
-
+CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux -Iincludes -I$(LIBFT)
+LIBS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz
 # Directories
 
 SRC_DIR = src/
@@ -24,7 +23,7 @@ NAME = fractol
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(LIBS) $(OBJS) -o fractol
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES)
 	make -s -C $(LIBFT)

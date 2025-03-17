@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsemenov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:42:31 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/14 20:48:56 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:32:57 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,10 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc == 4 && !strncmp(argv[1], "mandelbrot", 10))
+	if (argc == 2 && !strncmp(argv[1], "mandelbrot", 10))
 	{
-		// 1 argument: real part, 2 arg: imaginary part
-		t_complex c;
-		t_complex z;
-
-		c.real = atof(argv[2]);
-		c.i = atof(argv[3]);
-		z = print_sequence_mandelbrot(c);
-		if (z.real * z.real + z.i * z.i > 4)
-			printf("\nC doesn't relate to Mandelbrot set\n");
-		else
-			printf("\nC relates to Mandelbrot set\n");
-	  /*printf("Mandelbrot");*/
+		render_mandelbrot();
+		return (0);
 	}
 	else if (argc == 6 && !strcmp(argv[1], "julia"))
 	{
