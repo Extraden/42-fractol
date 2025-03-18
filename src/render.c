@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:23:52 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/17 18:10:32 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:20:03 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	render_mandelbrot(void)
 {
 	void	*mlx;
   void  *mlx_window;
-	t_data	img;
+	t_img	img;
   t_complex c;
   t_complex res;
 
