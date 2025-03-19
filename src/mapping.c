@@ -10,23 +10,11 @@ t_complex   pixel_to_complex(t_pixel pixel)
     return (complex_point);
 }
 
-int main(void)
+t_pixel     complex_to_pixel(t_complex complex_point)
 {
-    t_pixel     pixel;
-    t_complex   res;
+    t_pixel pixel;
 
-    pixel.x = 0;
-    pixel.y = 800;
-
-    res = pixel_to_complex(pixel);
-    printf("%f\n%f\n", res.real, res.i);
-    return (0);
+    pixel.x = (int) ((complex_point.real - REAL_CENTER) * ZOOM + (WIDTH / 2));
+    pixel.y = (int) ((complex_point.i - IM_CENTER) * ZOOM + (HEIGHT / 2));
+    return (pixel);
 }
-
-// fx = (x - W/2) / zoom + center_x
-// fy = (y - H/2) / zoom + center_y
-
-// t_pixel     complex_to_pixel(t_complex)
-// {
-//     return ();
-// }

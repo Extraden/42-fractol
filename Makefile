@@ -11,7 +11,7 @@ INCLUDES_DIR = includes/
 
 # Files
 
-SRCS = fractol.c render.c mandelbrot.c julia.c
+SRCS = fractol.c render.c mandelbrot.c julia.c mapping.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 INCLUDES = $(wildcard $(INCLUDES_DIR)*.h)
 LIBFT = libft

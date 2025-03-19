@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:42:31 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/17 17:32:57 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:39:03 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc == 2 && !strncmp(argv[1], "mandelbrot", 10))
+	if (argc == 2 && !strncmp(argv[1], "mandelbrot", 11))
 	{
 		render_mandelbrot();
 		return (0);
