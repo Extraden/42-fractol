@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:23:52 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/19 18:53:54 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:42:20 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,6 @@
  int red = (255 << 16) | (0 << 8) | 0;
  int green = (0 << 16) | (255 << 8) | 0;
  int blue = (0 << 16) | (0 << 8) | 255;
-
-// // Пример функции для расчёта цвета на основе числа итераций.
-// // Можно заменить формулу на любую другую, здесь приведён вариант градиента.
-// static int	get_color(size_t iter)
-// {
-//     int	color;
-//     if (iter == ITERATIONS)
-//         return (COLOR(0, 0, 0)); // Точка принадлежит множеству — чёрная.
-
-//     // Простейший градиент: серый цвет от чёрного до белого.
-//     double t = (double)iter / (double)ITERATIONS;
-//     int gray = (int)(t * 255);
-//     color = COLOR(gray, gray, gray);
-    
-//     // Можно использовать и более сложную схему, например:
-//     // int r = (int)(9 * (1 - t) * t * t * t * 255);
-//     // int g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
-//     // int b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-//     // color = COLOR(r, g, b);
-    
-//     return (color);
-// }
-
 
 static int	get_color(size_t iter)
 {
@@ -66,17 +43,13 @@ int	render_mandelbrot(void)
 	t_img	img;
   t_complex c;
   t_pixel pixel;
-  t_complex complex_res;
+  size_t  max_iteration;
   int     color;
 
 	mlx = mlx_init();
-  mlx_window = mlx_new_window(mlx, WIDTH, HEIGHT, "Fractol");
+  mlx_window = mlx_new_window(mlx, WIDTH, HEIGHT, "Mandelbrot");
 	img.img_ptr = mlx_new_image(mlx, WIDTH, HEIGHT);
-
 	img.pixels_ptr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.line_length, &img.endian);
-
-  complex_res = (t_complex){0};
-  c = (t_complex){0};
 
   pixel.x = 0;
   while (pixel.x < WIDTH)
@@ -85,14 +58,41 @@ int	render_mandelbrot(void)
     while (pixel.y < HEIGHT)
     {
       c = pixel_to_complex(pixel);
-      complex_res = sequence_mandelbrot(c);
-      if (complex_res.i * complex_res.i + complex_res.real * complex_res.real > 4)
-      {
-        pixel_to_complex(pixel);
-        complex_to_pixel(complex_res);
-        color = get_color(complex_res.last_iteration);
-        mlx_pixel_put(mlx, mlx_window, pixel.x, pixel.y, color);
-      }
+      max_iteration = sequence_mandelbrot(c);
+      color = get_color(max_iteration);
+      mlx_pixel_put(mlx, mlx_window, pixel.x, pixel.y, color);
+      pixel.y++;
+    }
+    pixel.x++;
+  } 
+  mlx_loop(mlx);
+	return (0);
+}
+int	render_julia(t_complex c)
+{
+	void	*mlx;
+  void  *mlx_window;
+	t_img	img;
+  t_pixel pixel;
+  t_complex z;
+  size_t  max_iteration;
+  int     color;
+
+	mlx = mlx_init();
+  mlx_window = mlx_new_window(mlx, WIDTH, HEIGHT, "Julia");
+	img.img_ptr = mlx_new_image(mlx, WIDTH, HEIGHT);
+	img.pixels_ptr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.line_length, &img.endian);
+
+  pixel.x = 0;
+  while (pixel.x < WIDTH)
+  {
+    pixel.y = 0;
+    while (pixel.y < HEIGHT)
+    {
+      z = pixel_to_complex(pixel);
+      max_iteration = sequence_julia(z, c);
+      color = get_color(max_iteration);
+      mlx_pixel_put(mlx, mlx_window, pixel.x, pixel.y, color);
       pixel.y++;
     }
     pixel.x++;

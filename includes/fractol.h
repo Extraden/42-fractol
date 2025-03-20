@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:17:32 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/19 18:51:35 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/20 13:40:32 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define COLOR(r, g, b) ((r << 16) | (g << 8) | (b))
 # define WIDTH 800
 # define HEIGHT 800
-# define REAL_CENTER -0.4
+# define REAL_CENTER 0
 # define IM_CENTER 0
 # define ZOOM 250
 
@@ -35,7 +35,6 @@ typedef struct s_complex
 {
 	double	real;
 	double	i;
-	size_t	last_iteration;
 }	t_complex;
 
 typedef struct	s_img
@@ -57,9 +56,10 @@ typedef struct s_fractal
 
 }	t_fractal;
 
-t_complex	sequence_mandelbrot(t_complex c);
-t_complex	print_sequence_julia(t_complex c, t_complex z0);
+size_t	sequence_mandelbrot(t_complex c);
+size_t	sequence_julia(t_complex z0, t_complex c);
 int	render_mandelbrot(void);
+int	render_julia(t_complex c);
 t_complex   pixel_to_complex(t_pixel pixel);
 t_pixel     complex_to_pixel(t_complex complex_point);
 
