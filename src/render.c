@@ -6,18 +6,15 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:23:52 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/20 13:42:20 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/21 20:55:01 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <X11/keysym.h>
 #include <mlx.h>
 #include <stdio.h>
 #include "fractol.h"
-
-// Color hint
- int red = (255 << 16) | (0 << 8) | 0;
- int green = (0 << 16) | (255 << 8) | 0;
- int blue = (0 << 16) | (0 << 8) | 255;
+#include "libft.h"
 
 static int	get_color(size_t iter)
 {
@@ -36,52 +33,23 @@ static int	get_color(size_t iter)
     return COLOR(r, g, b);
 }
 
-int	render_mandelbrot(void)
+int	render(t_fractal fractal)
 {
 	void	*mlx;
   void  *mlx_window;
-	t_img	img;
+//	t_img	img;
   t_complex c;
-  t_pixel pixel;
-  size_t  max_iteration;
-  int     color;
-
-	mlx = mlx_init();
-  mlx_window = mlx_new_window(mlx, WIDTH, HEIGHT, "Mandelbrot");
-	img.img_ptr = mlx_new_image(mlx, WIDTH, HEIGHT);
-	img.pixels_ptr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.line_length, &img.endian);
-
-  pixel.x = 0;
-  while (pixel.x < WIDTH)
-  {
-    pixel.y = 0;
-    while (pixel.y < HEIGHT)
-    {
-      c = pixel_to_complex(pixel);
-      max_iteration = sequence_mandelbrot(c);
-      color = get_color(max_iteration);
-      mlx_pixel_put(mlx, mlx_window, pixel.x, pixel.y, color);
-      pixel.y++;
-    }
-    pixel.x++;
-  } 
-  mlx_loop(mlx);
-	return (0);
-}
-int	render_julia(t_complex c)
-{
-	void	*mlx;
-  void  *mlx_window;
-	t_img	img;
-  t_pixel pixel;
   t_complex z;
+  t_pixel pixel;
   size_t  max_iteration;
   int     color;
 
 	mlx = mlx_init();
-  mlx_window = mlx_new_window(mlx, WIDTH, HEIGHT, "Julia");
-	img.img_ptr = mlx_new_image(mlx, WIDTH, HEIGHT);
-	img.pixels_ptr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.line_length, &img.endian);
+  perror("mlx_init");
+  exit(EXIT_FAILURE);
+  mlx_window = mlx_new_window(mlx, WIDTH, HEIGHT, fractal.fractal_name);
+	// img.img_ptr = mlx_new_image(mlx, WIDTH, HEIGHT);
+	// img.pixels_ptr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.line_length, &img.endian);
 
   pixel.x = 0;
   while (pixel.x < WIDTH)
@@ -89,8 +57,16 @@ int	render_julia(t_complex c)
     pixel.y = 0;
     while (pixel.y < HEIGHT)
     {
-      z = pixel_to_complex(pixel);
-      max_iteration = sequence_julia(z, c);
+      if (!(ft_strncmp(fractal.fractal_name, "mandelbrot", 11)))
+      {
+        c = pixel_to_complex(pixel);
+        max_iteration = sequence_mandelbrot(c);
+      }
+      else if (!ft_strncmp(fractal.fractal_name, "julia", 6))
+      {
+        z = pixel_to_complex(pixel);
+        max_iteration = sequence_julia(z, fractal.c);
+      }
       color = get_color(max_iteration);
       mlx_pixel_put(mlx, mlx_window, pixel.x, pixel.y, color);
       pixel.y++;
