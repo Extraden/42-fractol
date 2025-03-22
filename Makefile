@@ -14,7 +14,7 @@ MINILIBX_DIR = minilibx-linux/
 
 # Files
 
-SRCS = fractol.c render.c mandelbrot.c julia.c mapping.c
+SRCS = fractol.c render.c mandelbrot.c julia.c mapping.c utils.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 DEPS = $(OBJS:%.o=%.d)
 INCLUDES = $(INCLUDES_DIR)fractol.h
