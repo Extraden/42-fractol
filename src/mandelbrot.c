@@ -6,14 +6,12 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/20 13:02:01 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:49:29 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <math.h>
+#include <stddef.h>
 #include "fractol.h"
-#include <stdlib.h>
 
 size_t	sequence_mandelbrot(t_complex c)
 {

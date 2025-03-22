@@ -1,4 +1,4 @@
-void skip_make_sign(const char **ptr, int *sign)
+static void skip_make_sign(const char **ptr, int *sign)
 {
     if (**ptr == '-' || **ptr == '+')
 	{
