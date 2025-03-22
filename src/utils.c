@@ -1,7 +1,3 @@
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 void skip_make_sign(const char **ptr, int *sign)
 {
     if (**ptr == '-' || **ptr == '+')
