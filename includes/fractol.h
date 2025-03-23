@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:17:32 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/22 20:35:45 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/23 18:43:57 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@
 # define HEIGHT 800
 # define REAL_CENTER 0
 # define IM_CENTER 0
-# define ZOOM 200
 
 typedef struct s_vars
 {
-	size_t	width;
-	size_t	height;
+	int		width;
+	int		height;
 	double	real_center;
 	double	im_center;
 	size_t	zoom;
@@ -45,7 +44,7 @@ typedef struct s_pixel
 typedef struct s_complex
 {
 	double	real;
-	double	i;
+	double	imag;
 }	t_complex;
 
 typedef struct	s_img_data
@@ -65,14 +64,16 @@ typedef struct s_fractal
 	char	*fractal_name;
 	t_complex	c;
 	t_img_data	img;
+	t_vars		vars;
 
 }	t_fractal;
 
-size_t		sequence_mandelbrot(t_complex c);
-size_t		sequence_julia(t_complex z0, t_complex c);
-int			render(t_fractal fractal);
-t_complex   pixel_to_complex(t_pixel pixel);
-t_pixel     complex_to_pixel(t_complex complex_point);
+size_t		calculate_mandelbrot_sequence(t_complex c);
+size_t		calculate_julia_sequence(t_complex z0, t_complex c);
+int			render(t_fractal *fractal);
+t_complex   pixel_to_complex(t_pixel pixel, t_vars vars);
+t_pixel     complex_to_pixel(t_complex complex_point, t_vars vars);
 double  	ft_atof(const char *arr);
+void		init_mlx_system(t_fractal *fractal);
 
 #endif
