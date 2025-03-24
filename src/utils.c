@@ -1,6 +1,18 @@
-static void skip_make_sign(const char **ptr, int *sign)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/24 16:47:51 by dsemenov          #+#    #+#             */
+/*   Updated: 2025/03/24 16:55:12 by dsemenov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+static void	skip_make_sign(const char **ptr, int *sign)
 {
-    if (**ptr == '-' || **ptr == '+')
+	if (**ptr == '-' || **ptr == '+')
 	{
 		if (**ptr == '-')
 			*sign *= -1;
@@ -8,30 +20,30 @@ static void skip_make_sign(const char **ptr, int *sign)
 	}
 }
 
-double  ft_atof(const char *arr)
+double	ft_atof(const char *arr)
 {
-    double  res;
-    double  factor;
-    int     sign;
+	double res;
+	double factor;
+	int sign;
 
-    res = 0;
-    factor = 0.1;
-    sign = 1;
+	res = 0;
+	factor = 0.1;
+	sign = 1;
 	while ((*arr >= 9 && *arr <= 13) || *arr == ' ')
 		arr++;
-    skip_make_sign(&arr, &sign);
+	skip_make_sign(&arr, &sign);
 	while (*arr >= '0' && *arr <= '9')
 	{
 		res = (res * 10) + (*arr - '0');
 		arr++;
 	}
-    if (*arr == '.')
-        arr++;
-    int i = 0;
-    while (arr[i] && (arr[i] >= '0' && arr[i] <= '9'))
+	if (*arr == '.')
+		arr++;
+	int i = 0;
+	while (arr[i] && (arr[i] >= '0' && arr[i] <= '9'))
 	{
 		res += (arr[i] - '0') * factor;
-        factor *= 0.1;
+		factor *= 0.1;
 		i++;
 	}
 	return (res * sign);

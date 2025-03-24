@@ -1,7 +1,7 @@
 # Compiler and flags
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(MINILIBX_DIR) -I$(INCLUDES_DIR) -I$(LIBFT_DIR)
+CFLAGS = -Wall -Wextra -Werror -g -I$(MINILIBX_DIR) -I$(INCLUDES_DIR) -I$(LIBFT_DIR)
 MINILIBX_FLAGS = -L$(MINILIBX_DIR) -lmlx -lXext -lX11 -lm -lz
 
 # Directories
@@ -14,7 +14,8 @@ MINILIBX_DIR = minilibx-linux/
 
 # Files
 
-SRCS = fractol.c render.c mandelbrot.c julia.c mapping.c utils.c
+SRCS = fractol.c render.c mandelbrot.c burningship.c julia.c \
+		mapping.c utils.c events.c mlx_utils.c check_args.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 DEPS = $(OBJS:%.o=%.d)
 INCLUDES = $(INCLUDES_DIR)fractol.h

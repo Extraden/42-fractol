@@ -6,12 +6,12 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/23 18:10:23 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/24 20:32:40 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "fractol.h"
+#include <stddef.h>
 
 size_t	calculate_mandelbrot_sequence(t_complex c)
 {
@@ -32,4 +32,26 @@ size_t	calculate_mandelbrot_sequence(t_complex c)
 		i++;
 	}
 	return (ITERATIONS);
+}
+
+void	draw_mandelbrot(t_fractal *fractal)
+{
+	t_pixel		pixel;
+	t_complex	c;
+	size_t		max_iteration;
+	int			color;
+	pixel.y = 0;
+	while (pixel.y < fractal->vars.height)
+	{
+		pixel.x = 0;
+		while (pixel.x < fractal->vars.width)
+		{
+			c = pixel_to_complex(pixel, fractal->vars);
+			max_iteration = calculate_mandelbrot_sequence(c);
+			color = get_color(max_iteration);
+			my_mlx_pixel_put(&fractal->img, pixel.x, pixel.y, color);
+			pixel.x++;
+		}
+		pixel.y++;
+	}
 }
