@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/24 20:23:25 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/24 20:44:16 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,19 @@ size_t	calculate_julia_sequence(t_complex z0, t_complex c)
 	t_complex	tmp;
 	t_complex	zn;
 	size_t		i;
+	double		r2;
+	double		i2;
 
 	zn = z0;
 	i = 0;
 	while (i < ITERATIONS)
 	{
-		tmp.real = (zn.real * zn.real) - (zn.imag * zn.imag);
-		tmp.imag = 2 * zn.real * zn.imag;
-		if (zn.real * zn.real + zn.imag * zn.imag > 4)
+		r2 = zn.real * zn.real;
+		i2 = zn.imag * zn.imag;
+		if (r2 + i2 > 4)
 			return (i);
+		tmp.real = r2 - i2;
+		tmp.imag = 2 * zn.real * zn.imag;
 		zn.real = tmp.real + c.real;
 		zn.imag = tmp.imag + c.imag;
 		i++;
