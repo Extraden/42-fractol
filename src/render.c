@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:23:52 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/24 20:33:57 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:34:59 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,5 @@ int	render(t_fractal *fractal)
 		draw_burning_ship(fractal);
 	mlx_put_image_to_window(fractal->mlx_ptr, fractal->win_ptr,
 		fractal->img.img_ptr, 0, 0);
-	mlx_handle_hooks(fractal);
-	mlx_loop(fractal->mlx_ptr);
 	return (0);
 }

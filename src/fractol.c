@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:42:31 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/24 20:10:43 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:35:05 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	fractal_init(t_fractal *fractal, char **argv)
 		fractal->c.imag = ft_atof(argv[3]);
 	}
 	init_mlx_system(fractal);
+	mlx_handle_hooks(fractal);
 }
 
 int	main(int argc, char **argv)
@@ -39,5 +40,6 @@ int	main(int argc, char **argv)
 	check_args(argc, argv);
 	fractal_init(fractal, argv);
 	render(fractal);
+	mlx_loop(fractal->mlx_ptr);
 	return (0);
 }

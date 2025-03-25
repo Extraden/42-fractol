@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:48:26 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/24 16:53:29 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:31:32 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ int	handle_close(void *fractal)
 	return (0);
 }
 
+#define SCROLL_IN 4
+#define SCROLL_OUT 5
+
 int	handle_scroll(int button, int x, int y, void *fractal)
 {
 	t_fractal	*f;
@@ -51,15 +54,10 @@ int	handle_scroll(int button, int x, int y, void *fractal)
 	f = (t_fractal *)fractal;
 	(void)x;
 	(void)y;
-	if (button == 4)
-	{
+	if (button == SCROLL_IN)
 		f->vars.zoom *= 1.1;
-		render(f);
-	}
-	if (button == 5)
-	{
+	else if (button == SCROLL_OUT)
 		f->vars.zoom /= 1.1;
-		render(f);
-	}
+	render(f);
 	return (0);
 }
