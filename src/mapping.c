@@ -6,12 +6,11 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:48:02 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/24 16:52:26 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:19:12 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
 
 t_complex	pixel_to_complex(t_pixel pixel, t_vars vars)
 {

@@ -6,12 +6,11 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/24 20:44:16 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:15:29 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 

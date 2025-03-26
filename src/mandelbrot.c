@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/24 20:32:40 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/26 17:00:39 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,4 @@ void	draw_mandelbrot(t_fractal *fractal)
 		pixel.y++;
 	}
 }
+

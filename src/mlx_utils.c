@@ -2,6 +2,10 @@
 #include "libft.h"
 #include <mlx.h>
 #include <stdio.h>
+#include <X11/X.h>
+#include <X11/keysym.h>
+
+// ((r << 16) | (g << 8) | (b))
 
 int	get_color(size_t iter)
 {
@@ -19,7 +23,7 @@ int	get_color(size_t iter)
 	return (COLOR(r, g, b));
 }
 
-void	init_mlx_system(t_fractal *fractal)
+void	init_mlx_system(t_fractal *fractal, char *name)
 {
 	fractal->mlx_ptr = mlx_init();
 	if (!fractal->mlx_ptr)
@@ -28,7 +32,7 @@ void	init_mlx_system(t_fractal *fractal)
 		exit(EXIT_FAILURE);
 	}
 	fractal->win_ptr = mlx_new_window(fractal->mlx_ptr, WIDTH, HEIGHT,
-			fractal->fractal_name);
+			name);
 	fractal->img.img_ptr = mlx_new_image(fractal->mlx_ptr, WIDTH, HEIGHT);
 	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr,
 			&fractal->img.bits_per_pixel, &fractal->img.line_length,
@@ -47,6 +51,6 @@ void	my_mlx_pixel_put(t_img_data *image_data, int x, int y, int color)
 void	mlx_handle_hooks(t_fractal *fractal)
 {
 	mlx_hook(fractal->win_ptr, 4, 1L << 2, handle_scroll, fractal);
-	mlx_hook(fractal->win_ptr, 2, 1L << 0, handle_arrow_click, fractal);
-	mlx_hook(fractal->win_ptr, 17, 0, handle_close, fractal);
+	mlx_hook(fractal->win_ptr, KeyPress, KeyPressMask, handle_arrow_click, fractal);
+	mlx_hook(fractal->win_ptr, DestroyNotify, 0, handle_close, fractal);
 }

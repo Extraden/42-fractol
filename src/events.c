@@ -6,30 +6,34 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:48:26 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/25 17:31:32 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/26 12:10:30 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "mlx.h"
 #include <stdlib.h>
+#include <X11/keysym.h>
 
 int	handle_arrow_click(int keycode, void *fractal)
 {
 	t_fractal	*f;
 
 	f = (t_fractal *)fractal;
-	if (keycode == 65361)
-		f->vars.real_center -= 7 / f->vars.zoom;
-	if (keycode == 65362)
-		f->vars.im_center -= 7 / f->vars.zoom;
-	if (keycode == 65363)
-		f->vars.real_center += 7 / f->vars.zoom;
-	if (keycode == 65364)
-		f->vars.im_center += 7 / f->vars.zoom;
+	if (keycode == XK_Left)
+		f->vars.real_center -= 15 / f->vars.zoom;
+	if (keycode == XK_Up)
+		f->vars.im_center -= 15 / f->vars.zoom;
+	if (keycode == XK_Right)
+		f->vars.real_center += 15 / f->vars.zoom;
+	if (keycode == XK_Down)
+		f->vars.im_center += 15 / f->vars.zoom;
+	if (keycode == XK_Escape)
+		handle_close(fractal);
 	render(f);
 	return (0);
 }
+
 
 int	handle_close(void *fractal)
 {

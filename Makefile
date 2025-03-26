@@ -8,7 +8,7 @@ MINILIBX_FLAGS = -L$(MINILIBX_DIR) -lmlx -lXext -lX11 -lm -lz
 
 SRC_DIR = src/
 OBJ_DIR = obj/
-INCLUDES_DIR = includes/
+INCLUDES_DIR = include/
 LIBFT_DIR = libft/
 MINILIBX_DIR = minilibx-linux/
 

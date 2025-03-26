@@ -6,9 +6,11 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:47:51 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/24 16:55:12 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/26 19:12:15 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fractol.h"
 
 static void	skip_make_sign(const char **ptr, int *sign)
 {
@@ -20,7 +22,7 @@ static void	skip_make_sign(const char **ptr, int *sign)
 	}
 }
 
-double	ft_atof(const char *arr)
+t_result	ft_atof(const char *arr, double *value)
 {
 	double res;
 	double factor;
@@ -30,7 +32,7 @@ double	ft_atof(const char *arr)
 	factor = 0.1;
 	sign = 1;
 	while ((*arr >= 9 && *arr <= 13) || *arr == ' ')
-		arr++;
+	arr++;
 	skip_make_sign(&arr, &sign);
 	while (*arr >= '0' && *arr <= '9')
 	{
@@ -46,5 +48,8 @@ double	ft_atof(const char *arr)
 		factor *= 0.1;
 		i++;
 	}
-	return (res * sign);
+	if (arr[i] != '\0')
+		return (FAILURE);
+	*value = (res * sign);
+	return (SUCCESS);
 }
