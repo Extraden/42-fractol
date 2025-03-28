@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:47:51 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/28 16:21:09 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:34:16 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	get_sign(const char **ptr, int *sign)
 	if (**ptr == '-' || **ptr == '+')
 	{
 		if (**ptr == '-')
-			*sign *= -1;
+			*sign = -1;
+		(*ptr)++;
 	}
 }
 
@@ -33,7 +34,6 @@ t_result	ft_atof(const char *arr, double *value)
 	while ((*arr >= '\t' && *arr <= '\r') || *arr == ' ')
 		arr++;
 	get_sign(&arr, &sign);
-	arr++;
 	while ('0' <= *arr && *arr <= '9')
 		res = (res * 10) + (*arr++ - '0');
 	if (*arr == '.')

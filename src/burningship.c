@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:48:12 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/27 15:37:57 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/28 20:54:44 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ void	draw_burning_ship(t_fractal *fractal)
 	int			color;
 
 	pixel.y = 0;
-	while (pixel.y < fractal->vars.height)
+	while (pixel.y < fractal->viewport.height)
 	{
 		pixel.x = 0;
-		while (pixel.x < fractal->vars.width)
+		while (pixel.x < fractal->viewport.width)
 		{
-			c = pixel_to_complex(pixel, fractal->vars);
+			c = pixel_to_complex(pixel, fractal->viewport);
 			max_iteration = calculate_burning_ship_sequence(c);
-			color = get_color(max_iteration);
+			color = get_color(max_iteration, &fractal->color_map);
 			my_mlx_pixel_put(&fractal->img, pixel.x, pixel.y, color);
 			pixel.x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/27 16:26:01 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/28 20:05:58 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ void	draw_mandelbrot(t_fractal *fractal)
 	int			color;
 
 	pixel.y = 0;
-	while (pixel.y < fractal->vars.height)
+	while (pixel.y < fractal->viewport.height)
 	{
 		pixel.x = 0;
-		while (pixel.x < fractal->vars.width)
+		while (pixel.x < fractal->viewport.width)
 		{
-			c = pixel_to_complex(pixel, fractal->vars);
+			c = pixel_to_complex(pixel, fractal->viewport);
 			max_iteration = calculate_mandelbrot_sequence(c);
-			color = get_color(max_iteration);
+			color = get_color(max_iteration, &fractal->color_map);
 			my_mlx_pixel_put(&fractal->img, pixel.x, pixel.y, color);
 			pixel.x++;
 		}
