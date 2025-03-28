@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/26 17:15:29 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:25:57 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,13 @@ size_t	calculate_julia_sequence(t_complex z0, t_complex c)
 	return (ITERATIONS);
 }
 
-
 void	draw_julia(t_fractal *fractal)
 {
 	t_pixel		pixel;
 	t_complex	z;
 	size_t		max_iteration;
 	int			color;
-	
+
 	pixel.y = 0;
 	while (pixel.y < fractal->vars.height)
 	{
@@ -62,4 +61,3 @@ void	draw_julia(t_fractal *fractal)
 		pixel.y++;
 	}
 }
-

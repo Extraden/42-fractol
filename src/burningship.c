@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:48:12 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/24 20:33:18 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:37:57 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	draw_burning_ship(t_fractal *fractal)
 	t_complex	c;
 	size_t		max_iteration;
 	int			color;
+
 	pixel.y = 0;
 	while (pixel.y < fractal->vars.height)
 	{

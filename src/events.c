@@ -6,14 +6,14 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:48:26 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/26 12:10:30 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:25:48 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "mlx.h"
-#include <stdlib.h>
 #include <X11/keysym.h>
+#include <stdlib.h>
 
 int	handle_arrow_click(int keycode, void *fractal)
 {
@@ -33,7 +33,6 @@ int	handle_arrow_click(int keycode, void *fractal)
 	render(f);
 	return (0);
 }
-
 
 int	handle_close(void *fractal)
 {
