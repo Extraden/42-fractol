@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:38:42 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/28 20:54:53 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/30 19:36:53 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,6 @@
 #include <mlx.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-int	get_color(size_t iter, t_color_map *color_map)
-{
-	if (iter == ITERATIONS)
-	{
-		color_map->color = 0x000000;
-		return (color_map->color);
-	}
-	color_map->t = (double)iter / (double)ITERATIONS;
-	color_map->r = (int)(9 * (1 - color_map->t) * color_map->t * color_map->t
-			* color_map->t * 255);
-	color_map->g = (int)(15 * (1 - color_map->t) * (1 - color_map->t)
-			* color_map->t * color_map->t * 255);
-	color_map->b = (int)(8.5 * (1 - color_map->t) * (1 - color_map->t) * (1
-				- color_map->t) * color_map->t * 255);
-	color_map->color = ((color_map->r << 16) | (color_map->g << 8) | color_map->b);
-	return (color_map->color);
-}
 
 void	mlx_destroy_all(t_fractal *fractal)
 {
@@ -84,7 +66,7 @@ void	mlx_handle_hooks(t_fractal *fractal)
 {
 	mlx_hook(fractal->win_ptr, ButtonPress, ButtonPressMask, handle_scroll,
 		fractal);
-	mlx_hook(fractal->win_ptr, KeyPress, KeyPressMask, handle_arrow_click,
+	mlx_hook(fractal->win_ptr, KeyPress, KeyPressMask, handle_keyboard_clicks,
 		fractal);
 	mlx_hook(fractal->win_ptr, DestroyNotify, NoEventMask, handle_close,
 		fractal);

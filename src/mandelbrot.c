@@ -6,14 +6,14 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/28 20:05:58 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/30 16:39:33 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stddef.h>
 
-size_t	calculate_mandelbrot_sequence(t_complex c)
+size_t	calculate_mandelbrot_sequence(t_complex c, size_t iterations)
 {
 	t_complex	zn;
 	t_complex	tmp;
@@ -21,7 +21,7 @@ size_t	calculate_mandelbrot_sequence(t_complex c)
 
 	zn = (t_complex){0, 0};
 	i = 0;
-	while (i < ITERATIONS)
+	while (i < iterations)
 	{
 		tmp.real = (zn.real * zn.real) - (zn.imag * zn.imag);
 		tmp.imag = 2 * zn.real * zn.imag;
@@ -31,7 +31,7 @@ size_t	calculate_mandelbrot_sequence(t_complex c)
 		zn.imag = tmp.imag + c.imag;
 		i++;
 	}
-	return (ITERATIONS);
+	return (iterations);
 }
 
 void	draw_mandelbrot(t_fractal *fractal)
@@ -48,8 +48,8 @@ void	draw_mandelbrot(t_fractal *fractal)
 		while (pixel.x < fractal->viewport.width)
 		{
 			c = pixel_to_complex(pixel, fractal->viewport);
-			max_iteration = calculate_mandelbrot_sequence(c);
-			color = get_color(max_iteration, &fractal->color_map);
+			max_iteration = calculate_mandelbrot_sequence(c, fractal->iterations);
+			color = get_color(max_iteration, &fractal->color_map, fractal->iterations);
 			my_mlx_pixel_put(&fractal->img, pixel.x, pixel.y, color);
 			pixel.x++;
 		}

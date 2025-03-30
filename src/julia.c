@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:17:22 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/28 20:08:46 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/30 16:41:30 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-size_t	calculate_julia_sequence(t_complex z0, t_complex c)
+size_t	calculate_julia_sequence(t_complex z0, t_complex c, size_t iterations)
 {
 	t_complex	tmp;
 	t_complex	zn;
@@ -24,7 +24,7 @@ size_t	calculate_julia_sequence(t_complex z0, t_complex c)
 
 	zn = z0;
 	i = 0;
-	while (i < ITERATIONS)
+	while (i < iterations)
 	{
 		r2 = zn.real * zn.real;
 		i2 = zn.imag * zn.imag;
@@ -36,7 +36,7 @@ size_t	calculate_julia_sequence(t_complex z0, t_complex c)
 		zn.imag = tmp.imag + c.imag;
 		i++;
 	}
-	return (ITERATIONS);
+	return (iterations);
 }
 
 void	draw_julia(t_fractal *fractal)
@@ -53,8 +53,8 @@ void	draw_julia(t_fractal *fractal)
 		while (pixel.x < fractal->viewport.width)
 		{
 			z = pixel_to_complex(pixel, fractal->viewport);
-			max_iteration = calculate_julia_sequence(z, fractal->c);
-			color = get_color(max_iteration, &fractal->color_map);
+			max_iteration = calculate_julia_sequence(z, fractal->c, fractal->iterations);
+			color = get_color(max_iteration, &fractal->color_map, fractal->iterations);
 			my_mlx_pixel_put(&fractal->img, pixel.x, pixel.y, color);
 			pixel.x++;
 		}

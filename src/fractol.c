@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:42:31 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/28 20:46:34 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/30 16:29:00 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static t_result	julia_init(t_fractal *fractal, char **argv)
 
 t_result	fractal_init(t_fractal *fractal, char **argv)
 {
+	fractal->iterations = ITERATIONS;
 	fractal->viewport.width = WIDTH;
 	fractal->viewport.height = HEIGHT;
 	fractal->viewport.zoom = 200;
