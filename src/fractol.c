@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:42:31 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/30 16:29:00 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/30 20:27:20 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("MLX error", 2);
 		return (1);
 	}
+	colormap_init(&fractal.color_map);
 	render(&fractal);
 	mlx_loop(fractal.mlx_ptr);
 	mlx_destroy_window(fractal.mlx_ptr, fractal.win_ptr);
