@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:48:26 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/30 20:56:20 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:25:20 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	handle_keyboard_clicks(int keycode, void *fractal)
 	if (keycode == XK_Down)
 		f->viewport.im_center += 15 / f->viewport.zoom;
 	if (keycode == XK_space)
-    shift_colors(fractal);
-  /*if (keycode == XK_R)*/
-  /*    colormap_init(&fractal->color_map);*/
-  if (keycode == XK_Escape)
-    handle_close(fractal);
+		shift_colors(&f->color_map);
+	if (keycode == XK_R)
+		colormap_init(&f->color_map);
+	if (keycode == XK_Escape)
+		handle_close(fractal);
 	if (keycode == XK_equal && f->iterations < 500)
 		f->iterations += 5;
 	if (keycode == XK_minus && f->iterations > 6)
