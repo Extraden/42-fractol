@@ -6,7 +6,7 @@
 /*   By: dsemenov <dsemenov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 19:17:32 by dsemenov          #+#    #+#             */
-/*   Updated: 2025/03/31 15:15:18 by dsemenov         ###   ########.fr       */
+/*   Updated: 2025/03/31 15:33:52 by dsemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int					handle_scroll(int button, int x, int y, void *fractal);
 int					get_color(size_t iter, t_color_map *color,
 						size_t iterations);
 void				colormap_init(t_color_map *color_map);
-void        shift_colors(t_color_map *color_map);
+void				shift_colors(t_color_map *color_map);
 void				my_mlx_pixel_put(t_img_data *image_data, int x, int y,
 						int color);
 int					loop_hook(void *fractal);
